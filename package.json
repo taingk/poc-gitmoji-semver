@@ -19,5 +19,8 @@
   "homepage": "https://github.com/taingk/poc-gitmoji-semver#readme",
   "devDependencies": {
     "semantic-release-gitmoji": "^1.4.5"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
