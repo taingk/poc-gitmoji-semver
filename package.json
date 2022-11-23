@@ -1,6 +1,6 @@
 {
   "name": "poc-gitmoji-semver",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/taingk/poc-gitmoji-semver#readme",
   "devDependencies": {
+    "@semantic-release/exec": "^6.0.3",
     "semantic-release-gitmoji": "^1.4.5"
   },
   "dependencies": {

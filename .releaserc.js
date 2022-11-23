@@ -41,6 +41,12 @@ module.exports = {
       },
     ],
     '@semantic-release/npm',
+    [
+      '@semantic-release/exec',
+      {
+        prepareCmd: './scripts/bump-version.sh ${nextRelease.version}',
+      },
+    ],
     '@semantic-release/github',
   ],
 };
