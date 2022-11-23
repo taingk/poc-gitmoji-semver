@@ -40,7 +40,13 @@ module.exports = {
         },
       },
     ],
-    '@semantic-release/npm',
+    [
+      '@semantic-release/npm',
+      {
+        npmPublish: false,
+        tarballDir: 'dist',
+      },
+    ],
     '@semantic-release/github',
   ],
 };
