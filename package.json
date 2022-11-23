@@ -1,0 +1,23 @@
+{
+  "name": "poc-gitmoji-semver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taingk/poc-gitmoji-semver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taingk/poc-gitmoji-semver/issues"
+  },
+  "homepage": "https://github.com/taingk/poc-gitmoji-semver#readme",
+  "devDependencies": {
+    "semantic-release-gitmoji": "^1.4.5"
+  }
+}
