@@ -8,13 +8,13 @@ const envs = load(readFileSync(getLocalEnv, 'utf-8'));
 const option = process.argv[2];
 
 const callback = (error, stdout, stderr) => {
+  console.log(`STANDARD OUTPUT:\n\n${stdout}`);
   if (error) {
     console.log(`ERROR:\n\n${error.message}\n`);
   }
   if (stderr) {
     console.log(`STANDARD ERROR:\n\n${stderr}\n`);
   }
-  console.log(`STANDARD OUTPUT:\n\n${stdout}`);
 };
 
 const release = (option) => {

@@ -1,5 +1,3 @@
-// in ".releaserc.js" or "release.config.js"
-
 const path = require('path');
 const { promisify } = require('util');
 const dateFormat = require('dateformat');
