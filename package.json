@@ -23,6 +23,7 @@
   "devDependencies": {
     "@semantic-release/exec": "^6.0.3",
     "js-yaml": "^4.1.0",
+    "semantic-release": "^19.0.5",
     "semantic-release-gitmoji": "^1.4.5"
   },
   "dependencies": {
