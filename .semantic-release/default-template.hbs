@@ -40,16 +40,6 @@
 {{/each}}
 {{/if}}
 
-{{#unless sparkles}}
-  {{#unless bug}}
-    {{#unless ambulance}}
-      {{#unless lock}}
-        {{#unless boom}}
-          ## Rest of changes
-          - {{> commitTemplate}}
-        {{/unless}}
-      {{/unless}}
-    {{/unless}}
-  {{/unless}}
-{{/unless}}
+## Rest of changes
+- {{> commitTemplate}}
 {{/with}}

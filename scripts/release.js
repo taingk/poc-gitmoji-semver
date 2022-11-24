@@ -9,11 +9,11 @@ const option = process.argv[2];
 
 const callback = (error, stdout, stderr) => {
   console.log(`STANDARD OUTPUT:\n\n${stdout}`);
+  if (stderr) {
+    console.log(`STANDARD ERROR/WARNING:\n\n${stderr}\n`);
+  }
   if (error) {
     console.log(`ERROR:\n\n${error.message}\n`);
-  }
-  if (stderr) {
-    console.log(`STANDARD ERROR:\n\n${stderr}\n`);
   }
 };
 
