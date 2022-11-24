@@ -41,7 +41,5 @@
 {{/if}}
 
 ## Rest of changes
-{{#each commits}}
-- {{ this.subject }}
-{{/each}}
+- [`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}}) {{subject}}
 {{/with}}
