@@ -39,4 +39,9 @@
 - {{> commitTemplate}}
 {{/each}}
 {{/if}}
+
+{{#unless (or sparkles, bug, ambulance, lock, boom)}}
+## Rest of changes
+- {{> commitTemplate}}
+{{/if}}
 {{/with}}
