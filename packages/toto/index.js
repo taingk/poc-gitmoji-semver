@@ -1,2 +1,5 @@
 // ./workspace-a/index.js
-module.exports = 'toto';
+
+const toto = 'toto';
+
+module.exports = toto;
