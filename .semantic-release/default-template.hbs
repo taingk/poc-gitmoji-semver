@@ -39,7 +39,10 @@
 - {{> commitTemplate}}
 {{/each}}
 {{/if}}
+{{/with}}
 
 ## Rest of changes
+{{#each commits}}
+- {{ this.subject }}
 - {{> commitTemplate}}
-{{/with}}
+{{/each}}
