@@ -3,7 +3,6 @@ const { promisify } = require('util');
 const dateFormat = require('dateformat');
 const readFileAsync = promisify(require('fs').readFile);
 
-// dir
 const TEMPLATE_DIR = '.semantic-release';
 const template = readFileAsync(path.join(TEMPLATE_DIR, 'default-template.hbs'));
 const commitTemplate = readFileAsync(
