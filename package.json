@@ -30,5 +30,6 @@
   },
   "workspaces": [
     "packages/toto"
-  ]
+  ],
+  "packageManager": "yarn@3.3.0"
 }
