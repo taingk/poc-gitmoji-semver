@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3001;
 
+const toto = require('toto');
+console.log(toto); // -> a
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

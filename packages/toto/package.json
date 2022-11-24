@@ -1,0 +1,20 @@
+{
+  "name": "toto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taingk/poc-gitmoji-semver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taingk/poc-gitmoji-semver/issues"
+  },
+  "homepage": "https://github.com/taingk/poc-gitmoji-semver#readme"
+}

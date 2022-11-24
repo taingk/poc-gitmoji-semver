@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "workspaces": [
+    "packages/toto"
+  ]
 }

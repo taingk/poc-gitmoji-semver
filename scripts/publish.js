@@ -9,12 +9,12 @@ const option = process.argv[2];
 
 const callback = (error, stdout, stderr) => {
   if (error) {
-    console.log(`ERROR:\n${error.message}`);
+    console.log(`ERROR:\n\n${error.message}\n`);
   }
   if (stderr) {
-    console.log(`STANDARD ERROR:\n${stderr}`);
+    console.log(`STANDARD ERROR:\n\n${stderr}\n`);
   }
-  console.log(`STANDARD OUTPUT:\n${stdout}`);
+  console.log(`STANDARD OUTPUT:\n\n${stdout}`);
 };
 
 const publish = (option) => {
