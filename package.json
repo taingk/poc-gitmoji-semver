@@ -1,13 +1,13 @@
 {
   "name": "poc-gitmoji-semver",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "index.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "node ./scripts/publish",
-    "publish:dry-run": "node ./scripts/publish --dry-run"
+    "release": "node ./scripts/release",
+    "release:dry-run": "node ./scripts/release --dry-run"
   },
   "repository": {
     "type": "git",
