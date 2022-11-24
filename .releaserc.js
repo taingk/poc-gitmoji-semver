@@ -62,6 +62,9 @@ module.exports = {
             datetime: function (format = 'UTC:yyyy-mm-dd') {
               return dateFormat(new Date(), format);
             },
+            json: function (context) {
+              return JSON.stringify(context);
+            },
           },
           issueResolution: {
             template: '{baseUrl}/{owner}/{repo}/issues/{ref}',
