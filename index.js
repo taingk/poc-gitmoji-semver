@@ -3,7 +3,7 @@ const app = express();
 const port = 3001;
 
 const toto = require('toto');
-console.log(toto); // -> a
+console.log(toto);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
