@@ -8,8 +8,8 @@ app.get('/', (req, res) => {
   res.send(toto);
 });
 
-app.get('/test', (req, res) => {
-  res.send('test!');
+app.get('/hello', (req, res) => {
+  res.send('world!');
 });
 
 app.get('/health-check', (req, res) => {
