@@ -5,5 +5,23 @@
 {{/if}}
 
 {{#with commits}}
-	{{{formattedChangelogs this}}}
+{{#eachMajorSemver this}}
+## 💥 Breaking Changes
+- {{> commitTemplate}}
+{{/eachMajorSemver}}
+
+{{#eachMinorSemver this}}
+## ✨ New Features
+- {{> commitTemplate}}
+{{/eachMinorSemver}}
+
+{{#eachPatchSemver this}}
+## Patch changes
+- {{> commitTemplate}}
+{{/eachPatchSemver}}
+
+{{#eachOtherSemver this}}
+## Rest of changes
+- {{> commitTemplate}}
+{{/eachOtherSemver}}
 {{/with}}

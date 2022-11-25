@@ -32,69 +32,65 @@ module.exports = {
             datetime: function (format = 'UTC:yyyy-mm-dd') {
               return dateFormat(new Date(), format);
             },
-            formattedChangelogs: function (context) {
+            eachMajorSemver: function (context, options) {
+              let commit = '';
+              const listMajorGitmojis = majorGitmojis.map(
+                (gitmoji) => gitmoji.emoji
+              );
               const commits = Object.values(context).flat();
-              const majorCommits = commits.filter((commit) => {
-                const listMajorGitmojis = majorGitmojis.map(
-                  (gitmoji) => gitmoji.emoji
-                );
 
-                return listMajorGitmojis.includes(commit.gitmoji);
-              });
-              const minorCommits = commits.filter((commit) => {
-                const listMinorGitmojis = minorGitmojis.map(
-                  (gitmoji) => gitmoji.emoji
-                );
+              for (let i = 0, j = commits.length; i < j; i++) {
+                if (listMajorGitmojis.includes(commits[i].gitmoji)) {
+                  commit = commit + options.fn(commits[i]);
+                }
+              }
 
-                return listMinorGitmojis.includes(commit.gitmoji);
-              });
-              const patchCommits = commits.filter((commit) => {
-                const listPatchGitmojis = patchGitmojis.map(
-                  (gitmoji) => gitmoji.emoji
-                );
+              return commit;
+            },
+            eachMinorSemver: function (context, options) {
+              let commit = '';
+              const listMinorGitmojis = minorGitmojis.map(
+                (gitmoji) => gitmoji.emoji
+              );
+              const commits = Object.values(context).flat();
 
-                return listPatchGitmojis.includes(commit.gitmoji);
-              });
-              const otherCommits = commits.filter((commit) => {
-                const listOtherGitmojis = otherGitmojis.map(
-                  (gitmoji) => gitmoji.emoji
-                );
+              for (let i = 0, j = commits.length; i < j; i++) {
+                if (listMinorGitmojis.includes(commits[i].gitmoji)) {
+                  commit = commit + options.fn(commits[i]);
+                }
+              }
 
-                return listOtherGitmojis.includes(commit.gitmoji);
-              });
+              return commit;
+            },
+            eachPatchSemver: function (context, options) {
+              let commit = '';
+              const listPatchGitmojis = patchGitmojis.map(
+                (gitmoji) => gitmoji.emoji
+              );
+              const commits = Object.values(context).flat();
 
-              const formattedChangelogs = `
-              <h2><g-emoji class="g-emoji" alias="boom">💥</g-emoji> Breaking changes</h2>
-              <ul>
-                ${majorCommits.map(
-                  (major) =>
-                    `<li>[${major.commit.short}](https://github.com/${major.owner}/${major.repo}/commit/${major.commit.short}) ${major.gitmoji} ${major.subject}</li>`
-                )}
-              </ul>
-              <h2><g-emoji class="g-emoji" alias="sparkles">✨</g-emoji> New features</h2>
-              <ul>
-                ${minorCommits.map(
-                  (minor) =>
-                    `<li>[${minor.commit.short}](https://github.com/${minor.owner}/${minor.repo}/commit/${minor.commit.short}) ${minor.gitmoji} ${minor.subject}</li>`
-                )}
-              </ul>
-              <h2><g-emoji class="g-emoji" alias="wrench">🔧</g-emoji> Patch changes</h2>
-              <ul>
-                ${patchCommits.map(
-                  (patch) =>
-                    `<li>[${patch.commit.short}](https://github.com/${patch.owner}/${patch.repo}/commit/${patch.commit.short}) ${patch.gitmoji} ${patch.subject}</li>`
-                )}
-              </ul>
-              <h2><g-emoji class="g-emoji" alias="construction">🚧</g-emoji> Others</h2>
-              <ul>
-                ${otherCommits.map(
-                  (other) =>
-                    `<li>[${other.commit.short}](https://github.com/${other.owner}/${other.repo}/commit/${other.commit.short}) ${other.gitmoji} ${other.subject}</li>`
-                )}
-              </ul>
-              `;
+              for (let i = 0, j = commits.length; i < j; i++) {
+                if (listPatchGitmojis.includes(commits[i].gitmoji)) {
+                  commit = commit + options.fn(commits[i]);
+                }
+              }
 
-              return formattedChangelogs;
+              return commit;
+            },
+            eachOtherSemver: function (context, options) {
+              let commit = '';
+              const listOtherGitmojis = otherGitmojis.map(
+                (gitmoji) => gitmoji.emoji
+              );
+              const commits = Object.values(context).flat();
+
+              for (let i = 0, j = commits.length; i < j; i++) {
+                if (listOtherGitmojis.includes(commits[i].gitmoji)) {
+                  commit = commit + options.fn(commits[i]);
+                }
+              }
+
+              return commit;
             },
           },
           issueResolution: {
