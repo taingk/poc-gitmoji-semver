@@ -5,7 +5,7 @@ const port = 3001;
 const toto = require('toto');
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send(toto);
 });
 
 app.get('/test', (req, res) => {
