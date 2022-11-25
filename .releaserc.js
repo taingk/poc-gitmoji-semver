@@ -2,7 +2,7 @@ const path = require('path');
 const { promisify } = require('util');
 const dateFormat = require('dateformat');
 const readFileAsync = promisify(require('fs').readFile);
-const { gitmojis } = require('./gitmojis.json');
+const { gitmojis } = require('./.semantic-release/gitmojis.json');
 
 const TEMPLATE_DIR = '.semantic-release';
 const template = readFileAsync(path.join(TEMPLATE_DIR, 'default-template.hbs'));
@@ -14,6 +14,8 @@ const minorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'minor');
 const patchGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'patch');
 const otherGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === null);
 
+// Used as helper in handlebars template
+// For a "each" statement that takes a list of commit, return a commit by a given list of gitmojis
 const each = (context, options, gitmojis) => {
   const commits = Object.values(context).flat();
   const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
@@ -28,6 +30,8 @@ const each = (context, options, gitmojis) => {
   return commit;
 };
 
+// Used as helper in handlebars template
+// For a "if" statement that takes a list of commit, return a boolean to know if semver exists by a given list of gitmojis
 const isSemverExist = function (context, gitmojis) {
   const commits = Object.values(context).flat();
   const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
@@ -37,7 +41,7 @@ const isSemverExist = function (context, gitmojis) {
 };
 
 module.exports = {
-  branches: ['main'],
+  branches: ['main', 'next'],
   plugins: [
     [
       'semantic-release-gitmoji',
