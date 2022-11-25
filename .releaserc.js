@@ -64,26 +64,34 @@ module.exports = {
               });
 
               const formattedChangelogs = `
-              ## 💥 Breaking changes
-              ${majorCommits.map(
-                (major) =>
-                  `- [${major.commit.short}](https://github.com/${major.owner}/${major.repo}/commit/${major.commit.short}) ${major.gitmoji} ${major.subject}`
-              )}
-              ## ✨ New features
-              ${minorCommits.map(
-                (minor) =>
-                  `- [${minor.commit.short}](https://github.com/${minor.owner}/${minor.repo}/commit/${minor.commit.short}) ${minor.gitmoji} ${minor.subject}`
-              )}
-              ## 🔧 Patch changes
-              ${patchCommits.map(
-                (patch) =>
-                  `- [${patch.commit.short}](https://github.com/${patch.owner}/${patch.repo}/commit/${patch.commit.short}) ${patch.gitmoji} ${patch.subject}`
-              )}
-              ## 🚧 Others
-              ${otherCommits.map(
-                (other) =>
-                  `- [${other.commit.short}](https://github.com/${other.owner}/${other.repo}/commit/${other.commit.short}) ${other.gitmoji} ${other.subject}`
-              )}
+              <h2><g-emoji class="g-emoji" alias="boom">💥</g-emoji> Breaking changes</h2>
+              <ul>
+                ${majorCommits.map(
+                  (major) =>
+                    `<li>[${major.commit.short}](https://github.com/${major.owner}/${major.repo}/commit/${major.commit.short}) ${major.gitmoji} ${major.subject}</li>`
+                )}
+              </ul>
+              <h2><g-emoji class="g-emoji" alias="sparkles">✨</g-emoji> New features</h2>
+              <ul>
+                ${minorCommits.map(
+                  (minor) =>
+                    `<li>[${minor.commit.short}](https://github.com/${minor.owner}/${minor.repo}/commit/${minor.commit.short}) ${minor.gitmoji} ${minor.subject}</li>`
+                )}
+              </ul>
+              <h2><g-emoji class="g-emoji" alias="wrench">🔧</g-emoji> Patch changes</h2>
+              <ul>
+                ${patchCommits.map(
+                  (patch) =>
+                    `<li>[${patch.commit.short}](https://github.com/${patch.owner}/${patch.repo}/commit/${patch.commit.short}) ${patch.gitmoji} ${patch.subject}</li>`
+                )}
+              </ul>
+              <h2><g-emoji class="g-emoji" alias="construction">🚧</g-emoji> Others</h2>
+              <ul>
+                ${otherCommits.map(
+                  (other) =>
+                    `<li>[${other.commit.short}](https://github.com/${other.owner}/${other.repo}/commit/${other.commit.short}) ${other.gitmoji} ${other.subject}</li>`
+                )}
+              </ul>
               `;
 
               return formattedChangelogs;
