@@ -12,8 +12,8 @@ app.get('/test', (req, res) => {
   res.send('test!');
 });
 
-app.get('/test2', (req, res) => {
-  res.send('test2!');
+app.get('/health-check', (req, res) => {
+  res.send('yes');
 });
 
 app.get('/test3', (req, res) => {
