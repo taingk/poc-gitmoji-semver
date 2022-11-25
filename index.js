@@ -13,7 +13,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/health-check', (req, res) => {
-  res.send('yes');
+  res.send('we r right');
 });
 
 app.get('/test3', (req, res) => {
