@@ -16,14 +16,6 @@ app.get('/health-check', (req, res) => {
   res.send('we r right');
 });
 
-app.get('/test3', (req, res) => {
-  res.send('test3!');
-});
-
-app.get('/test4', (req, res) => {
-  res.send('test4!');
-});
-
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
