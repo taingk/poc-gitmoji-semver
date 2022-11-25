@@ -14,6 +14,20 @@ const minorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'minor');
 const patchGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'patch');
 const otherGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === null);
 
+const each = function (context, options, gitmojis) {
+  let commit = '';
+  const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
+  const commits = Object.values(context).flat();
+
+  for (let i = 0, j = commits.length; i < j; i++) {
+    if (listEmojis.includes(commits[i].gitmoji.codePointAt(0))) {
+      commit = commit + options.fn(commits[i]);
+    }
+  }
+
+  return commit;
+};
+
 module.exports = {
   branches: ['main'],
   plugins: [
@@ -32,66 +46,14 @@ module.exports = {
             datetime: function (format = 'UTC:yyyy-mm-dd') {
               return dateFormat(new Date(), format);
             },
-            eachMajorSemver: function (context, options) {
-              let commit = '';
-              const listMajorGitmojis = majorGitmojis.map(
-                (gitmoji) => gitmoji.emoji
-              );
-              const commits = Object.values(context).flat();
-
-              for (let i = 0, j = commits.length; i < j; i++) {
-                if (listMajorGitmojis.includes(commits[i].gitmoji)) {
-                  commit = commit + options.fn(commits[i]);
-                }
-              }
-
-              return commit;
-            },
-            eachMinorSemver: function (context, options) {
-              let commit = '';
-              const listMinorGitmojis = minorGitmojis.map(
-                (gitmoji) => gitmoji.emoji
-              );
-              const commits = Object.values(context).flat();
-
-              for (let i = 0, j = commits.length; i < j; i++) {
-                if (listMinorGitmojis.includes(commits[i].gitmoji)) {
-                  commit = commit + options.fn(commits[i]);
-                }
-              }
-
-              return commit;
-            },
-            eachPatchSemver: function (context, options) {
-              let commit = '';
-              const listPatchGitmojis = patchGitmojis.map(
-                (gitmoji) => gitmoji.emoji
-              );
-              const commits = Object.values(context).flat();
-
-              for (let i = 0, j = commits.length; i < j; i++) {
-                if (listPatchGitmojis.includes(commits[i].gitmoji)) {
-                  commit = commit + options.fn(commits[i]);
-                }
-              }
-
-              return commit;
-            },
-            eachOtherSemver: function (context, options) {
-              let commit = '';
-              const listOtherGitmojis = otherGitmojis.map(
-                (gitmoji) => gitmoji.emoji
-              );
-              const commits = Object.values(context).flat();
-
-              for (let i = 0, j = commits.length; i < j; i++) {
-                if (listOtherGitmojis.includes(commits[i].gitmoji)) {
-                  commit = commit + options.fn(commits[i]);
-                }
-              }
-
-              return commit;
-            },
+            eachMajorSemver: (context, options) =>
+              each(context, options, majorGitmojis),
+            eachMinorSemver: (context, options) =>
+              each(context, options, minorGitmojis),
+            eachPatchSemver: (context, options) =>
+              each(context, options, patchGitmojis),
+            eachOtherSemver: (context, options) =>
+              each(context, options, otherGitmojis),
           },
           issueResolution: {
             template: '{baseUrl}/{owner}/{repo}/issues/{ref}',

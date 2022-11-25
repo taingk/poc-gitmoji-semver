@@ -16,12 +16,12 @@
 {{/eachMinorSemver}}
 
 {{#eachPatchSemver this}}
-## Patch changes
+## 🚑️ Patch changes
 - {{> commitTemplate}}
 {{/eachPatchSemver}}
 
 {{#eachOtherSemver this}}
-## Rest of changes
+## ✅ Rest of changes
 - {{> commitTemplate}}
 {{/eachOtherSemver}}
 {{/with}}
