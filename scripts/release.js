@@ -6,8 +6,8 @@ const { readFileSync } = require('fs');
 const getLocalEnv = path.join(__dirname, '../env.local.yaml');
 const envs = load(readFileSync(getLocalEnv, 'utf-8'));
 const option = process.argv[2];
-//
-const callback = (error, stdout, stderr) => {
+
+gconst callback = (error, stdout, stderr) => {
   console.log(`STANDARD OUTPUT:\n\n${stdout}`);
   if (stderr) {
     console.log(`STANDARD ERROR/WARNING:\n\n${stderr}\n`);
