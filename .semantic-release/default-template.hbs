@@ -5,23 +5,32 @@
 {{/if}}
 
 {{#with commits}}
-{{#eachMajorSemver this}}
+
+{{#if (isMajorExist this)}}
 ## 💥 Breaking Changes
+{{/if}}
+{{#eachMajorSemver this}}
 - {{> commitTemplate}}
 {{/eachMajorSemver}}
 
-{{#eachMinorSemver this}}
+{{#if (isMinorExist this)}}
 ## ✨ New Features
+{{/if}}
+{{#eachMinorSemver this}}
 - {{> commitTemplate}}
 {{/eachMinorSemver}}
 
-{{#eachPatchSemver this}}
+{{#if (isPatchExist this)}}
 ## 🚑️ Patch changes
+{{/if}}
+{{#eachPatchSemver this}}
 - {{> commitTemplate}}
 {{/eachPatchSemver}}
 
-{{#eachOtherSemver this}}
+{{#if (isOtherExist this)}}
 ## ✅ Rest of changes
+{{/if}}
+{{#eachOtherSemver this}}
 - {{> commitTemplate}}
 {{/eachOtherSemver}}
 {{/with}}

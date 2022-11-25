@@ -14,10 +14,10 @@ const minorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'minor');
 const patchGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'patch');
 const otherGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === null);
 
-const each = function (context, options, gitmojis) {
-  let commit = '';
-  const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
+const each = (context, options, gitmojis) => {
   const commits = Object.values(context).flat();
+  const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
+  let commit = '';
 
   for (let i = 0, j = commits.length; i < j; i++) {
     if (listEmojis.includes(commits[i].gitmoji.codePointAt(0))) {
@@ -26,6 +26,14 @@ const each = function (context, options, gitmojis) {
   }
 
   return commit;
+};
+
+const isSemverExist = function (context, gitmojis) {
+  const commits = Object.values(context).flat();
+  const listEmojis = gitmojis.map((gitmoji) => gitmoji.emoji.codePointAt(0));
+  return commits.find((commit) =>
+    listEmojis.includes(commit.gitmoji.codePointAt(0))
+  );
 };
 
 module.exports = {
@@ -54,6 +62,10 @@ module.exports = {
               each(context, options, patchGitmojis),
             eachOtherSemver: (context, options) =>
               each(context, options, otherGitmojis),
+            isMajorExist: (context) => isSemverExist(context, majorGitmojis),
+            isMinorExist: (context) => isSemverExist(context, minorGitmojis),
+            isPatchExist: (context) => isSemverExist(context, patchGitmojis),
+            isOtherExist: (context) => isSemverExist(context, otherGitmojis),
           },
           issueResolution: {
             template: '{baseUrl}/{owner}/{repo}/issues/{ref}',
