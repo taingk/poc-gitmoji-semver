@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
   res.send(toto + ' 3');
 });
 
+app.get('/hello', (req, res) => {
+  res.send('world!');
+});
+
 app.get('/health-check', (req, res) => {
   res.send('we r right');
 });
