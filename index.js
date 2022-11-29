@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-  res.send('world! yes!');
+  res.send('world! yes! its over!');
 });
 
 app.get('/health-check', (req, res) => {

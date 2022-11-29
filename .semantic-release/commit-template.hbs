@@ -1,7 +1,6 @@
-[`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}})
-{{gitmoji}} {{subject}}
+[`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}}) {{gitmoji}} {{subject}}
 {{#if issues}}(Issues:{{#each issues}}
     [`{{text}}`]({{link}}){{/each}}){{/if}}{{#if wip}}{{#each wip}}
-    - [`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}})
-    {{subject}}{{/each}}
+    - [`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}}) {{gitmoji}} {{subject}}
+    {{/each}}
 {{/if}}
