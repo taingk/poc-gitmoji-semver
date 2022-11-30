@@ -9,10 +9,14 @@ const template = readFileAsync(path.join(TEMPLATE_DIR, 'default-template.hbs'));
 const commitTemplate = readFileAsync(
   path.join(TEMPLATE_DIR, 'commit-template.hbs')
 );
+
+const hiddenGitmojis = [':construction:'];
 const majorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'major');
 const minorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'minor');
 const patchGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'patch');
-const otherGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === null);
+const otherGitmojis = gitmojis.filter(
+  (gitmoji) => gitmoji.semver === null && !hiddenGitmojis.includes(gitmoji.code)
+);
 
 // Used as helper in handlebars template
 // For a "each" statement that takes a list of commit, return a commit by a given list of gitmojis
