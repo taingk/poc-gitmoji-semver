@@ -11,7 +11,7 @@ const commitTemplate = readFileAsync(
 );
 
 // List of Gitmoji that we don't want to show in our changelogs
-const hiddenGitmojisFromChangelogs = [':construction:', ':poop:'];
+const hiddenGitmojisFromChangelogs = [':construction:', ':fix:'];
 // List of Gitmoji that can trigger a Major release and that is shown in the changelogs
 const majorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'major');
 // List of Gitmoji that can trigger a Minor release and that is shown in the changelogs
@@ -94,7 +94,6 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
-        //
         prepareCmd: './scripts/bump-version.sh ${nextRelease.version}',
       },
     ],
