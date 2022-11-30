@@ -2,14 +2,15 @@ const path = require('path');
 const { promisify } = require('util');
 const dateFormat = require('dateformat');
 const readFileAsync = promisify(require('fs').readFile);
-const { gitmojis } = require('./.semantic-release/gitmojis.json');
 
+// Handlebars template for changelogs
 const TEMPLATE_DIR = '.semantic-release';
 const template = readFileAsync(path.join(TEMPLATE_DIR, 'default-template.hbs'));
 const commitTemplate = readFileAsync(
   path.join(TEMPLATE_DIR, 'commit-template.hbs')
 );
 
+const { gitmojis } = require('./.semantic-release/gitmojis.json');
 // List of Gitmoji that we don't want to show in our changelogs
 const hiddenGitmojisFromChangelogs = [':construction:', ':poop:'];
 // List of Gitmoji that can trigger a Major release and that is shown in the changelogs
