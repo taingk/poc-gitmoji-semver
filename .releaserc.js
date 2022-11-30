@@ -10,15 +10,22 @@ const commitTemplate = readFileAsync(
   path.join(TEMPLATE_DIR, 'commit-template.hbs')
 );
 
-const hiddenGitmojis = [':construction:'];
+// List of Gitmoji that we don't want to show in our changelogs
+const hiddenGitmojisFromChangelogs = [':construction:', ':poop:'];
+// List of Gitmoji that can trigger a Major release and that is shown in the changelogs
 const majorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'major');
+// List of Gitmoji that can trigger a Minor release and that is shown in the changelogs
 const minorGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'minor');
+// List of Gitmoji that can trigger a Patch release and that is shown in the changelogs
 const patchGitmojis = gitmojis.filter((gitmoji) => gitmoji.semver === 'patch');
+// List of Gitmoji that is shown in the changelogs
 const otherGitmojis = gitmojis.filter(
-  (gitmoji) => gitmoji.semver === null && !hiddenGitmojis.includes(gitmoji.code)
+  (gitmoji) =>
+    gitmoji.semver === null &&
+    !hiddenGitmojisFromChangelogs.includes(gitmoji.code)
 );
 
-// Used as helper in handlebars template
+// Used as helper in handlebars template (.semantic-release/default-template.hbs)
 // For a "each" statement that takes a list of commit, return a commit by a given list of gitmojis
 const each = (context, options, gitmojis) => {
   const commits = Object.values(context).flat();
@@ -34,7 +41,7 @@ const each = (context, options, gitmojis) => {
   return commit;
 };
 
-// Used as helper in handlebars template
+// Used as helper in handlebars template (.semantic-release/default-template.hbs)
 // For a "if" statement that takes a list of commit, return a boolean to know if semver exists by a given list of gitmojis
 const isSemverExist = function (context, gitmojis) {
   const commits = Object.values(context).flat();
@@ -87,6 +94,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
+        //
         prepareCmd: './scripts/bump-version.sh ${nextRelease.version}',
       },
     ],
