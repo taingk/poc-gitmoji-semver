@@ -437,12 +437,6 @@
       "code": ":safety_vest:",
       "description": "Add or update code related to validation.",
       "semver": null
-    },
-    {
-      "emoji": "🩹",
-      "code": ":fix:",
-      "description": "Simple fix.",
-      "semver": null
     }
   ]
 }
