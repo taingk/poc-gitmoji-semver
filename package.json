@@ -24,7 +24,7 @@
     "@semantic-release/exec": "^6.0.3",
     "commitlint": "^17.3.0",
     "js-yaml": "^4.1.0",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^24.1.2",
     "semantic-release-gitmoji": "^1.4.5"
   },
   "dependencies": {
